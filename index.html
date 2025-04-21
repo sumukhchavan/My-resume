@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivrajdevi Arts PU College, Hulkoppa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            position: relative;
+        }
+        
+        .logo {
+            height: 80px;
+            margin-right: 15px;
+        }
+        
+        .college-name {
+            text-align: center;
+        }
+        
+        .college-title {
+            color: #003366;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .college-subtitle {
+            color: #e74c3c;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Navigation styles */
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 51, 102, 0.9);
+            padding: 15px 0;
+            position: absolute;
+            top: 120px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item i {
+            margin-right: 8px;
+        }
+        
+        .nav-item:hover {
+            background-color: #e74c3c;
+            transform: translateY(-2px);
+        }
+        
+        .main-content {
+            margin-top: 0;
+        }
+        
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 500px;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 51, 102, 0.6);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Content sections */
+        .content-section {
+            display: none;
+            padding: 60px 0 40px;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            color: #003366;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .section-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .gallery-caption {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .footer {
+            background-color: #003366;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Mobile menu button styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #003366;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 101;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            background-color: #003366;
+            position: fixed;
+            top: 100px;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.expanded {
+            display: block;
+            max-height: 500px;
+        }
+        
+        .mobile-menu-items {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .mobile-menu-item {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .mobile-menu-item:hover {
+            background-color: #e74c3c;
+        }
+        
+        .mobile-menu-item i {
+            margin-right: 15px;
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 992px) {
+            .main-nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-item {
+                padding: 8px 15px;
+                margin: 0 5px;
+                font-size: 14px;
+            }
+            
+            .header {
+                position: relative;
+            }
+            
+            .hero-section {
+                margin-top: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .section-content {
+                padding: 20px;
+            }
+            
+            #contact .section-content > div {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-section {
+                height: 60vh;
+                min-height: 400px;
+            }
+            
+            .mobile-menu {
+                top: 100px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .college-title {
+                font-size: 20px;
+            }
+            
+            .college-subtitle {
+                font-size: 14px;
+            }
+            
+            .hero-section {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
+            .mobile-menu-btn {
+                right: 10px;
+            }
+            
+            .mobile-menu {
+                top: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="header">
+            <div class="container">
+                <div class="logo-container">
+                    <img class="logo" src="Images/college-logo.png" alt="College Logo" />
+                    <div class="college-name">
+                        <h1 class="college-title">Shivrajdevi Arts PU College</h1>
+                        <p class="college-subtitle">Hulkoppa</p>
+                    </div>
+                    <!-- Mobile Menu Button (visible only on mobile) -->
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" type="button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation (visible only on desktop) -->
+            <nav class="main-nav" id="mainNav">
+                <a href="#" class="nav-item" onclick="showSection('management')">
+                    <i class="fas fa-users"></i>
+                    <span>Management</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('nss')">
+                    <i class="fas fa-hands-helping"></i>
+                    <span>NSS</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('sports')">
+                    <i class="fas fa-running"></i>
+                    <span>Sports</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('achievements')">
+                    <i class="fas fa-trophy"></i>
+                    <span>Achievements</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('contact')">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+            
+            <!-- Mobile Menu (visible only on mobile) -->
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-menu-items">
+                    <a href="#" class="mobile-menu-item" onclick="showSection('management')">
+                        <i class="fas fa-users"></i>
+                        <span>Management</span>
+                    </a>
+                    <a href="#" class="mobile-menu-item" onclick="showSection('nss')">
+                        <i class="fas fa-hands-helping"></i>
+                        <span>NSS</span>
+                    </a>
+                    <a href="#" class="mobile-menu-item" onclick="showSection('sports')">
+                        <i class="fas fa-running"></i>
+                        <span>Campus Sports</span>
+                    </a>
+                    <a href="#" class="mobile-menu-item" onclick="showSection('achievements')">
+                        <i class="fas fa-trophy"></i>
+                        <span>Achievements</span>
+                    </a>
+                    <a href="#" class="mobile-menu-item" onclick="showSection('contact')">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact Us</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        
+        <section class="hero-section">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="folder/WhatsApp Video 2025-04-16 at 9.19.06 PM.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-overlay">
+                <h1 class="hero-title">Shivrajdevi Arts PU College</h1>
+                <p class="hero-subtitle">Empowering students through quality education in arts since 1985</p>
+            </div>
+        </section>
+        
+        <!-- Management Section -->
+        <section id="management" class="content-section">
+            <div class="container">
+                <h2 class="section-title">College Management</h2>
+                <div class="section-content">
+                    <p>Our college is governed by a dedicated management committee committed to providing quality education in arts. The committee consists of experienced educators and administrators who oversee the college's operations and strategic direction.</p>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <img src="Images/management1.jpg" alt="Management Team Meeting" />
+                            <div class="gallery-caption">Management Committee Meeting</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Images/management2.jpg" alt="Principal Office" />
+                            <div class="gallery-caption">Principal's Office</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Images/management3.jpg" alt="Administrative Staff" />
+                            <div class="gallery-caption">Our Administrative Team</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- NSS Section -->
+        <section id="nss" class="content-section">
+            <div class="container">
+                <h2 class="section-title">National Service Scheme (NSS)</h2>
+                <div class="section-content">
+                    <p>The NSS unit of our college actively engages students in community service and social activities. Our volunteers participate in various programs including blood donation camps, tree plantation drives, and village adoption programs.</p>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <img src="Images/nss1.jpg" alt="NSS Camp" />
+                            <div class="gallery-caption">Annual NSS Camp</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Images/nss2.jpg" alt="Community Service" />
+                            <div class="gallery-caption">Community Cleanup Drive</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Images/nss3.jpg" alt="NSS Volunteers" />
+                            <div class="gallery-caption">NSS Volunteers in Action</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sports Section -->
+        <section id="sports" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Campus Sports</h2>
+                <div class="section-content">
+                    <p>Our college promotes sports and physical fitness among students. We have excellent facilities for cricket, football, athletics, and indoor games. Our teams regularly participate in inter-collegiate tournaments and have won several accolades.</p>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <img src="Images/sports1.jpg" alt="Sports Ground" />
+                            <div class="gallery-caption">College Sports Ground</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Images/sports2.jpg" alt="Cricket Match" />
+                            <div class="gallery-caption">Inter-College Cricket Match</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Images/sports3.jpg" alt="Athletics" />
+                            <div class="gallery-caption">Annual Athletics Meet</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Achievements Section -->
+        <section id="achievements" class="content-section">
+            <div class="container">
+                <h2 class="section-title">College Achievements</h2>
+                <div class="section-content">
+                    <p>Our students and faculty have consistently excelled in academics, sports, and cultural activities. Here are some of our notable achievements and awards.</p>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <img src="Images/achievement1.jpg" alt="Award Ceremony" />
+                            <div class="gallery-caption">Best College Award 2022</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Images/achievement2.jpg" alt="Top Students" />
+                            <div class="gallery-caption">University Rank Holders</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Images/achievement3.jpg" alt="Cultural Event" />
+                            <div class="gallery-caption">Zonal Cultural Fest Winners</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="content-section active">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="section-content">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div>
+                            <h3 style="color: #003366; margin-bottom: 15px;">College Address</h3>
+                            <p style="margin-bottom: 20px;">
+                                Shivrajdevi Arts PU College<br />
+                                Hulkoppa, Karnataka<br />
+                                PIN: 577XXX
+                            </p>
+                            
+                            <h3 style="color: #003366; margin-bottom: 15px;">Contact Information</h3>
+                            <p style="margin-bottom: 10px;">
+                                <i class="fas fa-phone"></i> +91 9876543210
+                            </p>
+                            <p style="margin-bottom: 10px;">
+                                <i class="fas fa-envelope"></i> info@shivrajdeviarts.edu.in
+                            </p>
+                            <p>
+                                <i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 4:00 PM
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 style="color: #003366; margin-bottom: 15px;">Location Map</h3>
+                            <div style="height: 300px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                                <!-- Replace with actual map embed code -->
+                                <p>College Location Map</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <div class="container">
+                <p>Shivrajdevi Arts PU College, Hulkoppa</p>
+                <p>Email: info@shivrajdeviarts.edu.in | Phone: +91 XXXXX XXXXX</p>
+                <p class="copyright">© 2023 Shivrajdevi Arts PU College. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // DOM elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mainNav = document.getElementById('mainNav');
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            mobileMenu.classList.toggle('expanded');
+
+            // Toggle aria-expanded attribute for accessibility
+            const isExpanded = mobileMenu.classList.contains('expanded');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+
+            // Change icon based on state
+            const icon = mobileMenuBtn.querySelector('i');
+            if (isExpanded) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+                mobileMenu.classList.remove('expanded');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Show selected section and hide others
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.getElementsByClassName('content-section');
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+            }
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Scroll to the section with offset for header
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const sectionPosition = document.getElementById(sectionId).offsetTop;
+            window.scrollTo({
+                top: sectionPosition - headerHeight,
+                behavior: 'smooth'
+            });
+
+            // Update URL without reloading
+            history.pushState(null, null, '#' + sectionId);
+
+            // Close menu on mobile after selection
+            mobileMenu.classList.remove('expanded');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+
+        // Check URL hash on page load
+        window.addEventListener('DOMContentLoaded', function () {
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1);
+                showSection(sectionId);
+            } else {
+                // Show contact section by default
+                showSection('contact');
+            }
+        });
+
+        // Close menu when orientation changes
+        window.addEventListener('orientationchange', function () {
+            mobileMenu.classList.remove('expanded');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    </script>
+</body>
+</html>
